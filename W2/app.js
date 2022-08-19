@@ -11,29 +11,28 @@ const showOnPage = function (text) {
   };
   
 
+let ride = function(time= 5.5, weather= 'clear',){
+// time of day "example 1 is 1am 5 is 5am"
 
-let time = 5.5 // time of day "example 1 is 1am 5 is 5am"
-showOnPage('The current time is ' + time)
-let weather = 'clar' // weather is clear or is not
-if (weather ==='clear'){
-    true
-}else weather = 'bad weather'
-showOnPage('The current weater is ' + weather) 
+if (weather!='clear'){
+    weather = 'not clear'
+}
+
+
+if (time >= 6 && weather === 'clear')/*woke up to late*/{
+    showOnPage(`You forgot to set your alarm and its ${time}am on this beautiful day its to late to go for a bike ride`)
+    } else if (time <=4 && weather === 'clear')/*woke up to early*/{ 
+    showOnPage(`You woke up and looked outside its ${weather} but too early you woke up at ${time}am go back to bed`)
+    }else if (time<6 && time>4 && weather != 'clear' )/*woke up on time but the weather is bad*/{
+    showOnPage(`You woke up on time its ${time}am but the weather is ${wather} go back to sleep`)
+    }else if (time<6 && time>4 && weather === 'clear'  )/*woke up on time and the weather is clear*/{
+        showOnPage(`Yes you woke up on time its ${time}am and its ${weather}`)
+    }else showOnPage(`You didnt wake up at the right time because its ${time}am but its ok beause the weather is ${weather}`)
 let perfect = weather  === 'clear' && time === 5.5 // true if wake up exactily at 5:30 and its clear
 let good = time <6 && time>4 && weather === 'clear' // true if I wake on on time and its clear
 let bad = false // Set bad boolean function to false in the global scope  
 
-if (time >= 6 && weather === 'clear')/*woke up to late*/{
-    showOnPage('You forgot to set your alarm on this beautiful day its to late to go for a bike ride')
-    } else if (time <=4 && weather === 'clear')/*woke up to early*/{ 
-    showOnPage('You woke up and looked outside its beautiful but too early go back to bed')
-    }else if (time<6 && time>4 && weather != 'clear' )/*woke up on time but the weather is bad*/{
-    showOnPage('You woke up on time but the weather is bad go back to sleep')
-    }else if (time<6 && time>4 && weather === 'clear'  )/*woke up on time and the weather is clear*/{
-        showOnPage('Yes you woke up on time and its nice out')
-    }else showOnPage('You didnt wake up at the right time but its ok beause the weather is bad')
 
-    
 if (perfect){
       showOnPage('Today is perfect for riding')//woke up exactily at 5:30am and the weather is nice
     } else if (good){
@@ -41,9 +40,32 @@ if (perfect){
     } else if (weather != 'clear' || time >=6 || time <=4){
         bad = true // true if I didnot wake up on time or it's not clear.  the bad boolean function changes 
         // from false to true this happens in the local Scope
-        showOnPage('Today is a bad day')
-        showOnPage(bad)//weather is not clear or woke up at the wrong time
+        showOnPage('Today is a bad day to ride a bike')
+        //weather is not clear or woke up at the wrong time
         
     }else showOnPage('Impossiable') // should never be true
+
+}
+let mood = function(sick= 0){
+ if (sick===0){
+showOnPage('But get Some rest because your sick')
+}else{}  
+}
+let line = function(dash= 0){
+   
+        showOnPage('------------------------------------------------')
+    }
+
+let monday = ride(5,'clear') + mood(0) + line(0)
+let tuesday= ride(7,'not clear') + mood(1) + line(0)
+let wednesday = ride(3,'clear') + mood (0) + line(0)
+
+
+
+
+
+
+    
+
 
     
