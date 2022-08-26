@@ -50,7 +50,7 @@ if (perfect){
             showOnPage('Today is a bad day to ride a bike')
             //weather is not clear or woke up at the wrong time
         
-            }else{}
+            }else{}}
 
 let mood = function(sick= 0){
     showOnPage('But get Some rest because your sick')
