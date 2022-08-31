@@ -1,89 +1,111 @@
-// Deciding if I can ride my bike for 2 hours in the morning 
+// Deciding if I can ride my bike for 2 hours in the morning
 // I like to wake up betweeen 5 and 6 oclock
-// I only ride my bike if its clear outside 
+// I only ride my bike if its clear outside
 
 // Display on page function
 const showOnPage = function (text) {
-    let newParagraph = document.createElement("p");
-    newParagraph.innerHTML = text;
-    let outputDiv = document.getElementById("output");
-    outputDiv.append(newParagraph);
-  };
-  
-
+  let newParagraph = document.createElement("p");
+  newParagraph.innerHTML = text;
+  let outputDiv = document.getElementById("output");
+  outputDiv.append(newParagraph);
+};
+let xmin = 1;
+let xmax = 5;
+let xrandomNum = Math.floor(Math.random() * (xmax - xmin + 1)) + xmin;
+let ymin = 6;
+let ymax = 7;
+let yrandomNum = Math.floor(Math.random() * (ymax - ymin + 1)) + ymin;
+let zmin = 8;
+let zmax = 14;
+let zrandomNum = Math.floor(Math.random() * (zmax - zmin + 1)) + zmin;
 
 // time of day "example 1 is 1am 5 is 5am"
-let time = function(randomNum){
-    let morning = 0
-   if(randomNum(1)){ 
-   morning ='4:45 am'}
-    else if(randomNum === 2){
-    morning ='5:15 am'}else if(randomNum === 3){
-        return '5:30 am'}else if(randomNum === 4){
-            return '5:45 am'}else if(randomNum === 5){
-                return '6:00 am'}
-  
-}
-let weather = function(wrandomNum){
-    6 === 'clear'
-    7 === 'bad weather'
-    
-}
+let xtime = {
+  bed: 1,
+  early: 2,
+  perfect: 3,
+  late: 4,
+  work: 5,
 
+  time: function (x = xrandomNum, morning) {
+    if (x === 1) {
+      return (morning = "4:45 am");
+    } else if (x === 2) {
+      return (morning = "5:15 am");
+    } else if (x === 3) {
+      return (morning = "5:30 am");
+    } else if (x === 4) {
+      return (morning = "5:45 am");
+    } else if (x === 5) {
+      return (morning = "6:00 am");
+    }
+    showOnPage(morning);
+  },
 
-const choices = {
-   
-    early: 1,
-    etime: 2,
-    perfect: 3,
-    ltime: 4,
-    late: 5, 
-    goodweather: 6,
-    badweather: 7
+  outside: function (y = yrandomNum, weather) {
+    if (y === 6) {
+      return (weather = "great weather");
+    } else if (y === 7) {
+      return (weather = "bad weather");
+    }
+    showOnPage(weather);
+  },
+  text: function (tx = xrandomNum) {
+    if (tx === this.bed) {
+      tx = " I am going back to sleep its to early";
+      return tx;
+    } else if (tx === this.early) {
+      tx = " Its a little early but we can still ride";
+      return tx;
+    } else if (tx === this.perfect) {
+      tx = " I woke up right on time";
+      return tx;
+    } else if (tx === this.late) {
+      tx = " Its a little late but we can still ride";
+      return tx;
+    } else if (tx === this.work) {
+      tx = " Its to late to ride I need to rush to work";
+      return tx;
+    }
+    return tx
+  },
 
-}
+};
+let dayOfTheWeek = {
+  monday: 8,
+  tuesday: 9,
+  wednesday: 10,
+  thursday: 11,
+  friday: 12,
+  saturday: 13,
+  sunday: 14,
 
-const min = 1
-const max = 5
-let randomNum = Math.floor(Math.random() * (max - min + 1)) + min
-const minw = 6
-const maxw = 7
-let wrandomNum = Math.floor(Math.random() * (maxw - minw + 1)) + minw
-
-const choice = function(randomNum,wrandomNum){
-if (randomNum === 1 && wrandomNum === 6){
- showOnPage('the weather is great but its 4:45 am go back to sleep')
-}else if (randomNum === 2 && wrandomNum === 6){
-    showOnPage('the weather is great and its 5:15 let ride')
-}else if (randomNum === 3 && wrandomNum === 6){
-    showOnPage('the weather is great and its 5:30 everything is perfect')
-}else if (randomNum === 4 && wrandomNum === 6){
-    showOnPage('the weather is great and its 5:45 let ride')
-}else if (randomNum === 5 && wrandomNum === 6){
-    showOnPage('the weather is great and its 6:00am its to late to ride')
-}else{showOnPage('its bad weather try again tomorrow')}}
-
-let monday = (choice(randomNum+2,wrandomNum+1))
-let tuesday = (choice(randomNum+1,wrandomNum-1))
-let wednesday = (choice(randomNum-1,wrandomNum+1))
-let thursday = (choice(randomNum+2,wrandomNum-1))
-let friday = (choice(randomNum,wrandomNum))
-
-showOnPage(randomNum)
-showOnPage(wrandomNum)
-showOnPage(choice)
-let makeGuess = function (guess)
-{ return randomNum == guess}
-
-
-
-let mood = function(sick= 0){
-    showOnPage('But get Some rest because your sick')
-}
-
-let line = function(end = 1){
-   showOnPage('------------------------------------------------')
-}
-
-// Using all three functions 
-
+  days: function (today = zrandomNum) {
+    if (today === this.monday) {
+      today = "monday";
+      return today;
+    } else if (today === this.tuesday) {
+      today = "tuesday";
+      return today;
+    } else if (today === this.wednesday) {
+      today = "wednesday";
+      return today;
+    } else if (today === this.thursday) {
+      today = "thursday";
+      return today;
+    } else if (today === this.friday) {
+      today = "friday";
+      return today;
+    } else if (today === this.saturday) {
+      today = "saturday";
+      return today;
+    } else if (today === this.sunday) {
+      today = "sunday";
+      return today;
+    }
+  },
+ 
+};
+showOnPage(
+  `Today is ${dayOfTheWeek.days()} I woke up at ${xtime.time()}.${xtime.text()} I looked outside to find that its ${xtime.outside()}`
+);
