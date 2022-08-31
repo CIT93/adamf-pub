@@ -67,9 +67,8 @@ let xtime = {
       tx = " Its to late to ride I need to rush to work";
       return tx;
     }
-    return tx
+    return tx;
   },
-
 };
 let dayOfTheWeek = {
   monday: 8,
@@ -104,8 +103,7 @@ let dayOfTheWeek = {
       return today;
     }
   },
- 
 };
 showOnPage(
-  `Today is ${dayOfTheWeek.days()} I woke up at ${xtime.time()}.${xtime.text()} I looked outside to find that its ${xtime.outside()}`
+  `Today is ${dayOfTheWeek.days()} I woke up at ${xtime.time()}.${xtime.text()} I looked outside to find that its ${xtime.outside()}!`
 );
