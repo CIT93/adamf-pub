@@ -5,8 +5,12 @@ const showOnPage = function (text) {
   outputDiv.append(newParagraph);
 };
 
+let randomTime  = function (realTime = ` `){
+  let min = 0;
+  let max = 4;
+  let x = Math.floor(Math.random() * (max - min + 1)) + min;
 
-const choice = [
+  const choice = [
   {
     time: "4:45 am",
     body: " I am going back to sleep its to early",
@@ -28,6 +32,9 @@ const choice = [
     body: " Its to late to ride I need to rush to work",
   },
 ];
+realTime = `Its ${choice[x].time} and ${choice[x].body}`
+return realTime
+}
 
 const day = [
   "monday",
@@ -39,9 +46,16 @@ const day = [
   "sunday ",
 ];
 
-for (count = 0; count < 6; count++) {
-  let min = 0;
-  let max = 4;
-  let x = Math.floor(Math.random() * (max - min + 1)) + min;
-  showOnPage(`Today is ${day[count]}, Its ${choice[x].time} and ${choice[x].body}`);
+
+
+
+let week = function (x=''){
+  for(count=0; count <7 ; count ++){
+    x=`Today is ${day[count]} ${randomTime()}`
+    showOnPage(x)
+  }
+
 }
+
+showOnPage(week())
+
