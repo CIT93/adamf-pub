@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <title>Morning Commute</title>
+</head>
+
+<body>
+    <div id="main">
+    <h4>Driving to work simulator <h4>
+    
+<h2>Pick a car </h2>
+    <form id="form">
+        <label for="">Sports Car
+            <input name="sportsCar" type="checkbox" />
+        </label>
+      
+        <label for="">Family Van
+            <input name="familyVan" type="checkbox" />
+        </label>
+        <br>
+        <label for="">The time you left
+            <select name="time" id="">
+                <option value="0"></option>
+                <option value="2">5am</option>
+                <option value="1">5:15 am</option>
+                <option value="0">5:30 am</option>
+                <option value="-1">5:45 am</option>
+                <option value="-2">6:00 am</option>
+            </select>
+        </label>
+    <br>
+        <label for="">street lights
+            <select name="streetLight" id="">
+                <option value="0"></option>
+                <option value="1">2:green</option>
+                <option value="0">1:green 1:red</option>
+                <option value="-1">2:red </option>
+            </select>
+        </label>
+        <br />
+        
+        
+        <label for="">Traffic options
+            <select name="traffic" id="">
+                
+                <option value="2">no</option>
+                <option value="1">light</option>
+                <option value="0">regular</option>
+                <option value="-1">moderate</option>
+                <option value="-2">heavy</option>
+            </select>
+        </label>
+        <br>
+        <button>Submit</button>
+        <div id="error-message"></div>
+    </form>
+    <hr>
+    <div id="content"></div>   
+    <div id='decision-output'></div> 
+    </div>
+    <script src="../uuid/uuidv4.js"></script>
+    <script src="functions.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
