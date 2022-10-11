@@ -1,43 +1,44 @@
-const output = document.querySelector('#output')
-let decider =[{
-value: 0
-}] 
+const outcome = []
 
+const choices = function (obj) {
+    let car = 0
+    if (obj.sportscar === true){
+        car = car + 2
+    }else if(obj.familycar === true){
+        car = car + 1
+    } else car = 0
+    outcome.push(car)
+    outcome.push(obj.timeLeft)
+    outcome.push(obj.traffic)
+}
 
-document.querySelector("#fast").addEventListener("change", function (e){
-    console.log(e.target.checked)
-    if (e.target.checked === true){const summary = document.createElement("h2")
-summary.textContent = `You took the sports car you will fine` 
-decider.value = decider.value + 1
-document.querySelector("#output").appendChild(summary)
-
-        console.log("you took the Sports car")
+const renderChoice = function (outcome){
+    if (outcome.foreach = 3){ 
+    return " you just made it "}
+    else if (outcome.foreach < 3){
+        return "you didn't make it "
+    }else {
+        return "you made it "
     }
-})
-document.querySelector("#slow").addEventListener("change", function (e){
-    console.log(e.target.checked)
+}
     
-    if (e.target.checked === true){const summary = document.createElement("h2")
-    summary.textContent = `You took the family car you have bet left early`
-    decider.value = decider.value -1 
-    document.querySelector("#output").appendChild(summary)
-        console.log("you took the Family car")
+
+
+
+
+document.querySelector("form").addEventListener("submit",function (e){
+    e.preventDefault()
+    let sportscar = form.elements.fast.checked 
+    let familycar = form.elements.slow.checked
+    let timeLeft = form.elements.left.value
+    let traffic = form.elements.traffic.value
+    let newObj = {
+        sportscar: sportscar,
+        familycar: familycar,
+        timeLeft: timeLeft,
+        traffic: traffic,
     }
-})
-document.querySelector("#left").addEventListener("change", function (e){
-    decider.value = decider.value + e.target.value
-})
-document.querySelector("#traffic").addEventListener("change", function (e){
-    decider.value = decider.value - e.target.value
-})
- console.log(decider.value)
-const renderDecision = function (decider){
-    if(decider.value < 0){
-      const late = document.createElement("h2")
-     late.textContent = "Your Late!"
-    }else{ const onTime = document.createElement("h2")
-    OnTime.textContent = "Your on time!"}
- }
+choices(newObj)
+document.getElementById('form').reset()
 
-renderDecision(decider)
-
+})
