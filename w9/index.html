@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,65 +8,52 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
-    <title>Morning Commute</title>
+ <link rel="stylesheet" href="style.css">
+    <title>Week 9 Learn Together Code</title>
 </head>
 
 <body>
     <div id="main">
-    <h4>Driving to work simulator <h4>
-    
-<h2>Pick a car </h2>
+    <h2>Will you make to work in time</h2>
+  
     <form id="form">
-        <label for="">Sports Car
-            <input name="sportsCar" type="checkbox" />
+        <div>
+            <label for="name">User Name</label>
+            <input id="name"type="text">
+
+        </div>
+        <label>
+        <input id="fast" type="checkbox"> Take the sports car
         </label>
-      
-        <label for="">Family Van
-            <input name="familyVan" type="checkbox" />
-        </label>
-        <br>
-        <label for="">The time you left
-            <select name="time" id="">
-                <option value="0"></option>
-                <option value="2">5am</option>
-                <option value="1">5:15 am</option>
-                <option value="0">5:30 am</option>
-                <option value="-1">5:45 am</option>
-                <option value="-2">6:00 am</option>
-            </select>
-        </label>
-    <br>
-        <label for="">street lights
-            <select name="streetLight" id="">
-                <option value="0"></option>
-                <option value="1">2:green</option>
-                <option value="0">1:green 1:red</option>
-                <option value="-1">2:red </option>
-            </select>
-        </label>
-        <br />
-        
-        
-        <label for="">Traffic options
-            <select name="traffic" id="">
+        <label>
+            <input id="slow" type="checkbox"> Take the family car
+            </label>
+        <br><br>
+        <label for="">Time you left he house
+            <select id="left">
+                <option value=" "></option>
+                <option value="5:00 am">5:00am</option>
+                <option value="5:30 am">5:30am</option>
+                <option value="6:00 am">6am</option>
                 
-                <option value="2">no</option>
-                <option value="1">light</option>
-                <option value="0">regular</option>
-                <option value="-1">moderate</option>
-                <option value="-2">heavy</option>
             </select>
         </label>
-        <br>
-        <button>Submit</button>
-        <div id="error-message"></div>
+        <label for="">Traffic
+            <select id="traffic">
+                <option value=" "></option>
+                <option value="light">Light</option>
+                <option value="normal">Normal</option>
+                <option value="heavy">Heavy</option>
+                
+            </select>
+        </label>
+    <button>Submit</button>
     </form>
     <hr>
-    <div id="content"></div>   
-    <div id='decision-output'></div> 
-    </div>
-    <script src="../uuid/uuidv4.js"></script>
-    <script src="functions.js"></script>
+      <div id='error'></div>
+    <div id='decision-output'></div>    
+    
+    <script src='functions.js'></script>
     <script src="app.js"></script>
 </body>
 

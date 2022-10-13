@@ -83,8 +83,8 @@ if(outcome !== 0){
         document.querySelector("#decision-output").appendChild(messageEl)
     })
 }else {
-    const noDataEl = document.createElement('h3');
-    noDataEl.textContent = 'No Input to Render! Please enter data!!'
-    document.querySelector('#decision-output').appendChild(noDataEl)
+    const noInputEl = document.createElement('h3');
+    noInputEl.textContent = 'Please create an input'
+    document.querySelector("#decision-output").appendChild(noInputEl)
 }
 }
