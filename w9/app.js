@@ -1,19 +1,25 @@
 
+
 const outcome = [];
 let total = 0;
 outcome.forEach(function (each) {});
-const makeOutcome = function (obj) {
+const makeOutcome = function (obj,id) {
   let message = {
     output: " ",
+    id: " "
   };
-  if (total > 3) {
+  if(total === 0){
+    message.output = " "
+  }
+  else if (total > 3) {
     message.output = `you left at ${obj.timeLeft} and the traffic was ${obj.traffic} and your early for work`;
-  } else if (total < 3) {
+  } else if (total < 3 && total > 0) {
     message.output = `you left at ${obj.timeLeft} and the traffic was ${obj.traffic} and your late for work`;
   } else {
     message.output = `you left at ${obj.timeLeft} and the traffic was ${obj.traffic} and your right on time`;
   }
   outcome.push(message);
+
   renderChoice(outcome);
 };
 
@@ -49,31 +55,32 @@ let convert = function (obj) {
 document.querySelector("form").addEventListener("submit", function (e) {
   e.preventDefault();
   let message = []
+  const id = uuidv4()
  
-  if(fast.checked && slow.checked === false){
-    message.push("You much pick with car your going to drive")
-  }
+  if(fast.checked === false && slow.checked === false){
+    message.push(" You must pick witch car your going to drive")
+   }
   if(left.value === " "){
-    message.push("please select a time to leave")
+    message.push(" please select a time to leave")
   }
   if(traffic.value === " "){
-    message.push("please pick a traffic pattern")
+    message.push(" please pick a traffic pattern")
   }
   if(message.length > 0)
 {
   const errorEl = document.createElement("div")
-  errorEl.textContent = `${message.join(", ")}`
+  errorEl.textContent = `${message.join(" , ")}`
     document.getElementById("error").appendChild(errorEl)
   
 }  
 
-  let name = form.elements.name.value;
+
   let sportscar = form.elements.fast.checked;
   let familycar = form.elements.slow.checked;
   let timeLeft = form.elements.left.value;
   let traffictype = form.elements.traffic.value;
   let newObj = {
-    name: name,
+    id: id,
     sportscar: sportscar,
     familycar: familycar,
     timeLeft: timeLeft,
