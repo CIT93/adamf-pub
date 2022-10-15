@@ -6,7 +6,7 @@ outcome.forEach(function (each) {});
 const makeOutcome = function (obj,id) {
   let message = {
     output: " ",
-    id: " "
+    id: obj.id
   };
   if(total === 0){
     message.output = " "
@@ -15,12 +15,19 @@ const makeOutcome = function (obj,id) {
     message.output = `you left at ${obj.timeLeft} and the traffic was ${obj.traffic} and your early for work`;
   } else if (total < 3 && total > 0) {
     message.output = `you left at ${obj.timeLeft} and the traffic was ${obj.traffic} and your late for work`;
-  } else {
+  } else{
     message.output = `you left at ${obj.timeLeft} and the traffic was ${obj.traffic} and your right on time`;
   }
-  outcome.push(message);
+  
+  if (error === -1){
+    message.output = " "
+  
 
+  }else {
+
+  outcome.push(message)
   renderChoice(outcome);
+  }
 };
 
 let convert = function (obj) {
@@ -55,41 +62,45 @@ let convert = function (obj) {
 document.querySelector("form").addEventListener("submit", function (e) {
   e.preventDefault();
   let message = []
+  let error = 0
   const id = uuidv4()
- 
+ if(fast.checked === true && slow.checked === true){
+  message.push("You can't physically take two cars")
+ }
   if(fast.checked === false && slow.checked === false){
-    message.push(" You must pick witch car your going to drive")
+    message.push(" You must pick which car your going to drive")
    }
   if(left.value === " "){
     message.push(" please select a time to leave")
   }
-  if(traffic.value === " "){
+  if(t.value === " "){
     message.push(" please pick a traffic pattern")
   }
-  if(message.length > 0)
+  
+    if(message.length !== 0)
 {
   const errorEl = document.createElement("div")
   errorEl.textContent = `${message.join(" , ")}`
     document.getElementById("error").appendChild(errorEl)
+ error = -1
+}  else{
   
-}  
-
 
   let sportscar = form.elements.fast.checked;
   let familycar = form.elements.slow.checked;
   let timeLeft = form.elements.left.value;
-  let traffictype = form.elements.traffic.value;
+  let traffic =form.elements.t.value
   let newObj = {
     id: id,
     sportscar: sportscar,
     familycar: familycar,
     timeLeft: timeLeft,
-    traffictype: traffic,
+    traffic: traffic,
   };
   convert(newObj);
   makeOutcome(newObj);
   document.getElementById("form").reset();
-});
+}});
 
 const renderChoice = function (outcome) {
   document.querySelector("#decision-output").innerHTML = "";
