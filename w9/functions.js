@@ -1,7 +1,7 @@
 const outcome = [];
 let total = 0;
 outcome.forEach(function (each) {});
-const makeOutcome = function (obj,id) {
+const makeOutcome = function (obj) {
   let message = {
     output: " ",
     id: obj.id
@@ -75,9 +75,11 @@ const renderChoice = function (outcome) {
   }
 };
 
-const removeMessage = function (id){
+const removeMessage = function  (output){
   const index = outcome.findIndex(function (outcome){
-    return outcome.id === id
+   
+    return this.output.id === id
+    
   })
   if(index > -1){
     outcome.splice(index, 1)
