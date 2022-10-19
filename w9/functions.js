@@ -64,7 +64,7 @@ const renderChoice = function (outcome) {
       const messageEl = document.createElement("h3");
       messageEl.textContent = `${outcome.output}`;
       document.querySelector("#decision-output").appendChild(messageEl);
-      
+      myRemove()
 
     });
    
@@ -75,16 +75,9 @@ const renderChoice = function (outcome) {
   }
 };
 
-const removeMessage = function  (output){
-  const index = outcome.findIndex(function (outcome){
-   
-    return this.output.id === id
-    
-  })
-  if(index > -1){
-    outcome.splice(index, 1)
-  }
-}
+
+  
+
 
 const saveMessage = function (outcome){
   localStorage.setItem("outcome",JSON.stringify(outcome))
@@ -95,6 +88,19 @@ const remove = document.createElement("button")
         remove.textContent = "delete The message above ^"
         document.querySelector("#decision-output").appendChild(remove)
         remove.addEventListener("click",function (){
-          removeMessage(outcome.id)
+          removeMessage(outcome) 
           saveMessage(outcome)
-        })}
+          renderChoice()
+        
+          })}
+        
+        
+        
+        const removeMessage = function  (id){
+          const index = outcome.findIndex(function (){
+   
+            return outcome === id
+            
+          })
+          if(index > -1){
+            outcome.splice(index, 1)}}

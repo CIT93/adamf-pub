@@ -44,7 +44,6 @@ document.querySelector("form").addEventListener("submit", function (e) {
   };
   convert(newObj);
   makeOutcome(newObj);
-  myRemove()
   document.getElementById("form").reset();
 }});
 
