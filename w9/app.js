@@ -31,7 +31,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
 }  else{
   
 
-  let sportscar = form.elements.fast.checked;
+  let sportscar = form.elements.fast.checked
   let familycar = form.elements.slow.checked;
   let timeLeft = form.elements.left.value;
   let traffic =form.elements.t.value

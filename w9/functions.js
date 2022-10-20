@@ -88,9 +88,11 @@ const remove = document.createElement("button")
         remove.textContent = "delete The message above ^"
         document.querySelector("#decision-output").appendChild(remove)
         remove.addEventListener("click",function (){
-          removeMessage(outcome) 
           saveMessage(outcome)
-          renderChoice()
+          removeMessage(outcome) 
+          renderChoice(outcome)
+          
+          
         
           })}
         
