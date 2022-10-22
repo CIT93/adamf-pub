@@ -39,4 +39,9 @@ document.querySelector("form").addEventListener("submit",(e) => {
     makeOutcome(newObj);
     document.getElementById("form").reset();
   }
+ 
 });
+ window.addEventListener("load",function(e){
+    loadMessage()
+    renderChoice(outcome)
+  })

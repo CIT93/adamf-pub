@@ -1,7 +1,16 @@
 const outcome = [];
 let total = 0;
+const loadMessage = () => {
+  const saveOutcome = JSON.parse(localStorage.getItem("outcome"));
+  while(outcome.length > 0){
+    outcome.shift()
+  }
+  saveOutcome.forEach((message) => {
+outcome.push(message)
+  })
+};
 
-const makeOutcome =  (obj) => {
+const makeOutcome = (obj) => {
   let message = {
     output: " ",
     id: obj.id,
@@ -32,7 +41,7 @@ const makeOutcome =  (obj) => {
     message.output = " ";
   } else {
     outcome.push(message);
-    saveMessage(outcome)
+    saveMessage(outcome);
     renderChoice(outcome);
   }
 };
@@ -66,16 +75,16 @@ let convert = (obj) => {
   return x;
 };
 
-const renderChoice = (outcome)=> {
+const renderChoice = (outcome) => {
   document.querySelector("#decision-output").innerHTML = "";
   if (outcome.length !== 0) {
     outcome.forEach((outcome) => {
       const messageEl = document.createElement("h3");
       messageEl.textContent = `${outcome.output}`;
       document.querySelector("#decision-output").appendChild(messageEl);
-      saveMessage(outcome)
+      saveMessage(outcome);
       myRemove(outcome);
-      myEdit(outcome)
+      myEdit(outcome);
     });
   } else {
     const noInputEl = document.createElement("h3");
@@ -89,34 +98,34 @@ const saveMessage = (outcome) => {
 };
 
 const myRemove = (id) => {
-
   const remove = document.createElement("button");
-  remove.setAttribute("id",`${id.id}`)
+  remove.setAttribute("id", `${id.id}`);
   remove.textContent = "delete The message above ^";
   document.querySelector("#decision-output").appendChild(remove);
-  saveMessage(outcome)
- 
-  remove.addEventListener("click",() => {
+  saveMessage(outcome);
+
+  remove.addEventListener("click", () => {
     saveMessage(outcome);
-    removeMessage(outcome);
+    removeMessage(id.id);
     renderChoice(outcome);
   });
 };
 
 const myEdit = (id) => {
   const edit = document.createElement("button");
-  edit.setAttribute("id",`${id.id}`)
-  edit.textContent = "Edit"; const removeT = document.createElement("h3");
+  edit.setAttribute("id", `${id.id}`);
+  edit.textContent = "Edit";
+  const removeT = document.createElement("h3");
   removeT.textContent = `${now.fromNow()}`;
   document.querySelector("#decision-output").appendChild(removeT);
-  saveMessage(outcome)
+  saveMessage(outcome);
   document.querySelector("#decision-output").appendChild(edit);
   edit.addEventListener("click", function () {
     location.assign(`edit.html`);
-}
-)}
+  });
+};
 const removeMessage = (id) => {
-  const index = outcome.findIndex(() => outcome === id);
+  const index = outcome.findIndex((index) => index.id === id);
   if (index > -1) {
     outcome.splice(index, 1);
   }
