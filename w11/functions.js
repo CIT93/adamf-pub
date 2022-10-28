@@ -130,3 +130,4 @@ const removeMessage = (id) => {
     outcome.splice(index, 1);
   }
 };
+
