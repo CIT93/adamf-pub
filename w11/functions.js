@@ -2,12 +2,12 @@ const outcome = [];
 let total = 0;
 const loadMessage = () => {
   const saveOutcome = JSON.parse(localStorage.getItem("outcome"));
-  while(outcome.length > 0){
-    outcome.shift()
+  while (outcome.length > 0) {
+    outcome.shift();
   }
   saveOutcome.forEach((message) => {
-outcome.push(message)
-  })
+    outcome.push(message);
+  });
 };
 
 const makeOutcome = (obj) => {
@@ -130,4 +130,3 @@ const removeMessage = (id) => {
     outcome.splice(index, 1);
   }
 };
-
