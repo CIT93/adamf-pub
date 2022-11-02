@@ -1,6 +1,6 @@
 let outcome = [];
 const order = document.getElementById("meal");
-const finalMenu = document.getElementById("final")
+const finalMenu = document.getElementById("final");
 const Meal = function (
   appetizer = [],
   soup = [],
@@ -13,12 +13,12 @@ const Meal = function (
   this.dessert = dessert;
 };
 const menu = () => {
-  obj={
-     appetizer: ["chips", "bread", "nachos", "quesadilla"],
-   soup: ["clam chowder", "tortilla", "minestrone", "chicken noodle"],
-   mainCourse: ["lasagna", "braised chicken", "poke bowl", "sushi"],
-   dessert: ["key lime pie", "oreo shake", "cheese cake", "mud slide"],
-  }
+  obj = {
+    appetizer: ["chips", "bread", "nachos", "quesadilla"],
+    soup: ["clam chowder", "tortilla", "minestrone", "chicken noodle"],
+    mainCourse: ["lasagna", "braised chicken", "poke bowl", "sushi"],
+    dessert: ["key lime pie", "oreo shake", "cheese cake", "mud slide"],
+  };
 };
 
 const getRandomPrice = (min, max) => {
@@ -37,15 +37,15 @@ randomMeal = (menu) => {
      the main course will be ${
        obj.mainCourse[getRandom(3)]
      } for $${getRandomPrice()}
-     the dessert will be ${obj.dessert[getRandom(3)]} for $${getRandomPrice()}`);
+     the dessert will be ${
+       obj.dessert[getRandom(3)]
+     } for $${getRandomPrice()}`);
 };
 
-order.addEventListener("click",(e) => {
-    e.preventDefault()
-    randomMeal()
-    const final = document.createElement("h5")
-    final.textContent = outcome[0]
-    finalMenu.appendChild(final)
-
-
-})
+order.addEventListener("click", (e) => {
+  e.preventDefault();
+  randomMeal();
+  const final = document.createElement("h5");
+  final.textContent = outcome[0];
+  finalMenu.appendChild(final);
+});
