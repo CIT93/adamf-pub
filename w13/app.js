@@ -63,13 +63,13 @@ order.addEventListener("click", (e) => {
   console.log(meal1.getPrice());
   iterator();
   let pcalc = () => {
-    j = j + 1;
+    j = j + price[i-1]
   };
   pcalc();
   const final = document.createElement("h5");
   final.textContent = `${outcome[i - 1]} it will cost ${
     price[i - 1]
-  } the total is ${price[j - 2] + price[i - 1]}`;
+  } the total is ${j}`;
   finalMenu.appendChild(final);
 });
 
